@@ -43,8 +43,10 @@ namespace ProcedureGeneration
                 {
                     float xOfPoint = (float)i / (int)(Size.Value);
                     float yOfPoint = (float)j / (int)(Size.Value);
-                    float noise = PerlinNoise.Noise(xOfPoint, yOfPoint, (int)Octaves.Value, (float)Persistense.Value,(float) Frequency.Value, lerp);
-                    PaintPixel(i,j,bmp,noise);
+                    float noise = PerlinNoise.Noise(xOfPoint, yOfPoint, (int)Octaves.Value, (float)Persistense.Value,(float) Frequency.Value, lerp) + (float)Volume.Value;
+                    //float sigm = noise / (1 + (float)Math.Pow((float)Math.E, -noise));
+
+                    PaintPixel(i,j,bmp, noise);
                 }
             }
             PerlinImage.Source = bmp;

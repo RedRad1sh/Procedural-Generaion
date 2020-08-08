@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProcedureGeneration"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="771.953" Loaded="Window_Loaded">
+        Title="PerlinNoise2D" Height="500" Width="771.953" Loaded="Window_Loaded" Icon="cloud.png">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="450" VerticalAlignment="Top" Width="450" Margin="10,10,0,0">
             <Image x:Name="PerlinImage" Height="450" Margin="0,0,-2,-2" Width="450"/>
@@ -13,22 +13,25 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="450" Margin="465,10,0,0" VerticalAlignment="Top" Width="290">
             <Grid Margin="0,-1,-1,0">
                 <Button Content="Reload" HorizontalAlignment="Left" Margin="28,4,0,0" VerticalAlignment="Top" Width="166" Click="Button_Click" Height="26" FontSize="16"/>
-                <Label Content="Масштаб" HorizontalAlignment="Left" Margin="102,60,0,0" VerticalAlignment="Top" Width="79" FontSize="16"/>
-                <Label Content="Кол-в октав" HorizontalAlignment="Left" Margin="91,112,0,0" VerticalAlignment="Top" Width="103" FontSize="16"/>
+                <Label Content="Scale" HorizontalAlignment="Left" Margin="102,60,0,0" VerticalAlignment="Top" Width="79" FontSize="16"/>
+                <Label Content="Octaves" HorizontalAlignment="Left" Margin="91,112,0,0" VerticalAlignment="Top" Width="103" FontSize="16"/>
                 <Slider x:Name="Size" HorizontalAlignment="Left" Margin="9,90,0,0" VerticalAlignment="Top" Maximum="300" Minimum="20" Width="235" Value="120" TickPlacement="BottomRight" IsSnapToTickEnabled="True" TickFrequency="10"/>
                 <Slider x:Name="Octaves" HorizontalAlignment="Left" Margin="9,148,0,0" VerticalAlignment="Top" Maximum="25" Width="235" Value="10" IsSnapToTickEnabled="True" TickPlacement="BottomRight"/>
-                <Label Content="Стойкость" HorizontalAlignment="Left" Margin="102,170,0,0" VerticalAlignment="Top" Width="92" FontSize="16"/>
+                <Label Content="Persistense" HorizontalAlignment="Left" Margin="102,170,0,0" VerticalAlignment="Top" Width="92" FontSize="16"/>
                 <Slider x:Name="Persistense" HorizontalAlignment="Left" Margin="4,206,0,0" VerticalAlignment="Top" Maximum="1" Width="240" Value="0.5" SmallChange="0.05"/>
                 <Label Content="{Binding Value, ElementName=Size, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="249,80,-11,0" VerticalAlignment="Top" Height="34" Width="43" FontSize="14"/>
                 <Label Content="{Binding Value, ElementName=Octaves, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="249,138,-11,0" VerticalAlignment="Top" Height="34" Width="43" FontSize="14" RenderTransformOrigin="0.478,0.495"/>
                 <Label Content="{Binding Value, ElementName=Persistense, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="249,192,-11,0" VerticalAlignment="Top" Height="32" Width="43" FontSize="14" RenderTransformOrigin="0.478,0.495"/>
-                <CheckBox x:Name="ColorsAdd" Content="Цвета" HorizontalAlignment="Left" Margin="207,8,0,0" VerticalAlignment="Top" FontSize="16" Height="22"/>
-                <Label Content="Частота" HorizontalAlignment="Left" Margin="102,234,0,0" VerticalAlignment="Top" Width="92" FontSize="16"/>
+                <CheckBox x:Name="ColorsAdd" Content="Colors" HorizontalAlignment="Left" Margin="207,8,0,0" VerticalAlignment="Top" FontSize="16" Height="22"/>
+                <Label Content="Frequency" HorizontalAlignment="Left" Margin="102,234,0,0" VerticalAlignment="Top" Width="92" FontSize="16"/>
                 <Slider x:Name="Frequency" HorizontalAlignment="Left" Margin="4,270,0,0" VerticalAlignment="Top" Maximum="1" Width="240" Value="0.3" SmallChange="0.05"/>
                 <Label Content="{Binding Value, ElementName=Frequency, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="249,254,-11,0" VerticalAlignment="Top" Height="34" Width="43" FontSize="14" RenderTransformOrigin="0.478,0.495"/>
                 <RadioButton x:Name="LinearLerp" Content="LinearLerp" HorizontalAlignment="Left" Margin="9,360,0,0" VerticalAlignment="Top" FontSize="16" IsChecked="True"/>
                 <RadioButton x:Name="CosLerp" Content="CosLerp" HorizontalAlignment="Left" Margin="168,360,0,0" VerticalAlignment="Top" FontSize="16"/>
                 <RadioButton x:Name="LerpWithQuinticCurve" Content="LerpWithQuinticCurve" HorizontalAlignment="Left" Margin="44,400,0,0" VerticalAlignment="Top" FontSize="16"/>
+                <Label Content="Volume" HorizontalAlignment="Left" Margin="102,293,0,0" VerticalAlignment="Top" Width="92" FontSize="16"/>
+                <Slider x:Name="Volume" HorizontalAlignment="Left" Margin="4,329,0,0" VerticalAlignment="Top" Maximum="0.25" Width="240" Value="0.15" SmallChange="0.05"/>
+                <Label Content="{Binding Value, ElementName=Volume, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="249,313,-3,0" VerticalAlignment="Top" Height="34" Width="43" FontSize="14" RenderTransformOrigin="0.478,0.495"/>
             </Grid>
         </Border>
 

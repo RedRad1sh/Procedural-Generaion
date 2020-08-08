@@ -28,6 +28,16 @@ namespace ProcedureGeneration
             return t * t * t * (t * (t * 6 - 15) + 10);
         }
 
+        public static float SmoothedNoise2D(float x, float y)
+        {
+            float corners = (Noise(x - 1, y - 1) + Noise(x + 1, y - 1) +
+                 Noise(x - 1, y + 1) + Noise(x + 1, y + 1)) / 16;
+            float sides = (Noise(x - 1, y) + Noise(x + 1, y) +
+                 Noise(x, y - 1) + Noise(x, y + 1)) / 8;
+            float center = Noise(x, y) / 4;
+            return corners + sides + center;
+        }
+
         public static float Lerp(float a, float b, float t, Lerps lerp)
         {
             if (lerp == Lerps.CosLerp)
@@ -61,6 +71,13 @@ namespace ProcedureGeneration
             }
         }
 
+        //static float[] GetPseudoRandomGradientVector(int x, int y)
+        //{
+        //    float[] randomPoint = new float[] { (float)(new Random().NextDouble() * 2 - 1), (float)(new Random().NextDouble() * 2 - 1) };
+        //    randomPoint[0] /=  (float)Math.Sqrt(2); // normalize gradient 
+        //    randomPoint[1] /= (float)Math.Sqrt(2); // normalize gradient 
+        //}
+
         public enum Lerps
         {
             LinearLerp,
@@ -68,7 +85,7 @@ namespace ProcedureGeneration
             CosLerp,
         }
 
-        public static float Noise(float fx, float fy, Lerps lerp)
+        public static float Noise(float fx, float fy, Lerps lerp = Lerps.CosLerp)
         {
             PRNG rand = new PRNG();
 
@@ -76,6 +93,11 @@ namespace ProcedureGeneration
             int top = (int)System.Math.Floor(fy);
             float pointInQuadX = fx - left;
             float pointInQuadY = fy - top;
+
+            //float[] topLeftGradient = GetPseudoRandomGradientVector(left, top, rand);
+            //float[] topRightGradient = GetPseudoRandomGradientVector(left + 1, top,rand);
+            //float[] bottomLeftGradient = GetPseudoRandomGradientVector(left, top + 1,rand);
+            //float[] bottomRightGradient = GetPseudoRandomGradientVector(left + 1, top + 1,rand);
 
             float[] topLeftGradient = GetPseudoRandomGradientVector(left, top, rand);
             float[] topRightGradient = GetPseudoRandomGradientVector(left + 1, top, rand);
